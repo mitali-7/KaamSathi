@@ -1,0 +1,160 @@
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a40;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #2b2b63;
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar h1 {
+    color: #fff;
+    margin: 0;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    color: #4caf50;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.content h2 {
+    color: #fff;
+}
+
+.content p {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #b3b3ff;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #2b2b63;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #000000;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.terms {
+    color: #fff;
+}
+
+.terms a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+
+.forgot-password {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.signup-link a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+</style>

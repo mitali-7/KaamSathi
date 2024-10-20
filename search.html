@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaamsathi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="img/kaamsathi-high-resolution-logo (1).jpeg" width="15%"></div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="search.html">Search a Job</a></li>
+                <li><a href="job_posting.html">Post a Job</a></li>
+                <li><a href="login.html" class="btn-cta">Sign In/Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="container">
+    <h2>Search Jobs</h2>
+    <form id="searchForm">
+        <label for="title">Job Title:</label>
+        <input type="text" id="title" placeholder="Enter job title" name="title">
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" placeholder="Enter location" name="location">
+
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="job-list" id="searchResults"></ul>
+    <p id="noResults" class="no-results" style="display:none;">No jobs found matching your search criteria.</p>
+</div>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Get search input values
+        const titleInput = document.getElementById('title').value.toLowerCase();
+        const locationInput = document.getElementById('location').value.toLowerCase();
+
+        // Retrieve the jobs from localStorage
+        const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+
+        // Filter jobs based on search criteria (job title and location)
+        const filteredJobs = jobs.filter(job => {
+            const jobTitle = job.title.toLowerCase();
+            const jobLocation = job.location.toLowerCase();
+
+            return jobTitle.includes(titleInput) && jobLocation.includes(locationInput);
+        });
+
+        // Display the filtered jobs
+        displayJobs(filteredJobs);
+    });
+
+    function displayJobs(jobs) {
+        const searchResults = document.getElementById('searchResults');
+        const noResultsMessage = document.getElementById('noResults');
+
+        // Clear previous results
+        searchResults.innerHTML = '';
+
+        // Show "No jobs found" if there are no matching jobs
+        if (jobs.length === 0) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+
+            // Loop through the filtered jobs and display them
+            jobs.forEach(job => {
+                const jobItem = document.createElement('li');
+                jobItem.innerHTML = `
+                    <h3>${job.title}</h3>
+                    <p><strong>Location:</strong> ${job.location}</p>
+                    <p><strong>Salary:</strong> $${job.salary}</p>
+                    <p>${job.description}</p>
+                `;
+                searchResults.appendChild(jobItem);
+            });
+        }
+    }
+</script>
+
+<footer>
+    <p>&copy; 2024 Kaamsathi</p>
+</footer>
+
+</body>
+</html>

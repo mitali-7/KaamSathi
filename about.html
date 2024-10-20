@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaamsathi-About Us</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="img/kaamsathi-high-resolution-logo (1).jpeg" width="15%"></div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="search.html">Search a Job</a></li>
+                <li><a href="job_posting.html">Post a Job</a></li>
+                <li><a href="login.html" class="btn-cta">Sign In/Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>About Us</h1>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <h2>Our Mission</h2>
+        <p>
+            Welcome to our Job Platform, where we connect job seekers with opportunities in the informal sector. Our
+            mission is to bridge the gap between individuals looking for jobs and employers seeking skilled and
+            unskilled workers. With our platform, finding jobs has never been easier or more accessible for everyone.
+        </p>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+        <h3>Our Key Features</h3>
+        <div class="feature">
+            <div class="feature-box">
+                <h4>Universal ID for Jobs</h4>
+                <p>We use a unique universal ID system for job seekers, ensuring that they have easy access to jobs
+                    across various sectors without the hassle of multiple registrations.</p>
+            </div>
+            <div class="feature-box">
+                <h4>Job Matching</h4>
+                <p>Our platform intelligently matches job seekers with relevant job opportunities based on their skills,
+                    location, and preferences.</p>
+            </div>
+            <div class="feature-box">
+                <h4>Secure and Reliable</h4>
+                <p>Your personal and job-related data is kept safe and secure with our platform's advanced security
+                    measures, providing peace of mind for both job seekers and employers.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <h3>Contact Us</h3>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Kaamsathi</p>
+    </footer>
+
+    <script>
+        // Handle the contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Simple validation
+            if (name && email && message) {
+                alert('Thank you for contacting us, ' + name + '! We will get back to you soon.');
+                document.getElementById('contactForm').reset(); // Clear the form
+            } else {
+                alert('Please fill in all the fields.');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

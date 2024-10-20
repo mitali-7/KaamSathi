@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaamsathi-Post a job</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="img/kaamsathi-high-resolution-logo (1).jpeg" width="15%"></div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="search.html">Search a Job</a></li>
+                <li><a href="job_posting.html">Post a Job</a></li>
+                <li><a href="login.html" class="btn-cta">Sign In/Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Post a Job</h2>
+        <form id="jobPostForm">
+            <label for="title">Job Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="description">Job Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="salary">Salary:</label>
+            <input type="number" id="salary" name="salary" step="1000" required>
+
+            <button type="submit">Post Job</button>
+        </form>
+
+        <p class="success-message" id="successMessage">Job posted successfully!</p>
+    </div>
+
+    <script>
+        document.getElementById('jobPostForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get form values
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const location = document.getElementById('location').value;
+            const salary = document.getElementById('salary').value;
+
+            // Create a job object
+            const job = {
+                title: title,
+                description: description,
+                location: location,
+                salary: salary
+            };
+
+            // Get existing jobs from localStorage or create an empty array
+            let jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+
+            // Add new job to jobs array
+            jobs.push(job);
+
+            // Save updated jobs array back to localStorage
+            localStorage.setItem('jobs', JSON.stringify(jobs));
+
+            // Clear form
+            document.getElementById('jobPostForm').reset();
+
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+
+            // Redirect to home page after a few seconds
+            setTimeout(function () {
+                window.location.href = 'home.html';  // Redirect to home page
+            }, 2000);
+        });
+    </script>
+    <footer>
+        <p>&copy; 2024 Kaamsathi</p>
+    </footer>
+
+</body>
+
+</html>

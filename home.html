@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaamsathi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="img/kaamsathi-high-resolution-logo (1).jpeg" width="15%"></div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="search.html">Search a Job</a></li>
+                <li><a href="job_posting.html">Post a Job</a></li>
+                <li><a href="login.html" class="btn-cta">Sign In/Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Find Your Dream Job</h1>
+        <p>Search from thousands of job listings</p>
+        <form>
+            <input type="text" placeholder="Job Title, Keywords">
+            <input type="text" placeholder="Location">
+            <button>Search</button>
+        </form>
+        <div class="hero-cta">
+            <a href="search.html" class="button">Browse Jobs</a>
+            <a href="job_posting.html" class="button">Post a Job</a></button>
+        </div>
+    </section>
+
+    <section class="Available Jobs">
+        <div class="container">
+            <h2>Available Jobs</h2>
+        </div>
+    
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <input type="text" id="filterLocation" placeholder="Filter by location">
+            <input type="number" id="filterSalary" placeholder="Minimum salary">
+            <button onclick="filterJobs()">Apply Filters</button>
+            <button onclick="clearFilters()">Clear Filters</button>
+        </div>
+    
+        <!-- Job Listings -->
+        <ul class="job-list" id="jobList"></ul>
+    
+        <script>
+            // Get jobs from localStorage or create an empty array if no jobs exist
+            const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+    
+            // Select the job list element
+            const jobList = document.getElementById('jobList');
+    
+            // Function to display jobs
+            function displayJobs(jobArray) {
+                // Clear the job list
+                jobList.innerHTML = '';
+    
+                // Check if jobArray has any jobs
+                if (jobArray.length === 0) {
+                    jobList.innerHTML = '<p>No jobs available.</p>';
+                    return;
+                }
+    
+                // Loop through the jobs and create list items
+                jobArray.forEach((job, index) => {
+                    const jobItem = document.createElement('li');
+                    jobItem.innerHTML = `
+                        <h3>${job.title}</h3>
+                        <p><strong>Location:</strong> ${job.location}</p>
+                        <p><strong>Salary:</strong> $${job.salary}</p>
+                        <p>${job.description}</p>
+                        <button class="apply-btn" onclick="applyJob(${index})">Apply Now</button>
+                    `;
+                    jobList.appendChild(jobItem);
+                });
+            }
+    
+            // Display all jobs initially
+            displayJobs(jobs);
+    
+            // Function to filter jobs based on location and salary
+            function filterJobs() {
+                const locationFilter = document.getElementById('filterLocation').value.toLowerCase();
+                const salaryFilter = document.getElementById('filterSalary').value;
+    
+                // Filter jobs based on location and salary
+                const filteredJobs = jobs.filter(job => {
+                    const matchesLocation = job.location.toLowerCase().includes(locationFilter);
+                    const matchesSalary = salaryFilter ? job.salary >= salaryFilter : true;
+    
+                    return matchesLocation && matchesSalary;
+                });
+    
+                // Display the filtered jobs
+                displayJobs(filteredJobs);
+            }
+    
+            // Function to clear the filters and show all jobs again
+            function clearFilters() {
+                document.getElementById('filterLocation').value = '';
+                document.getElementById('filterSalary').value = '';
+                displayJobs(jobs);  // Display all jobs again
+            }
+    
+            // Function to handle the "Apply" button click
+            function applyJob(jobIndex) {
+                const job = jobs[jobIndex];
+                alert(`You are applying for the job: ${job.title} in ${job.location}`);
+                // Here, you can redirect to an application form, or open a modal for applying
+            }
+        </script>
+    </section>
+    
+
+    <section class="categories">
+        <h2>Popular Categories</h2>
+        <ul>
+            <li>
+                <img src="img/Carpenter-1.jpg" alt="">
+                <h3>Carpenter </h3>
+                <p>1234 jobs</p>
+            </li>
+            <li>
+                <img src="img/istockphoto-2153699791-612x612.jpg" alt="">
+                <h3>Rickshaw pullers</h3>
+                <p>567 jobs</p>
+            </li>
+            <li>
+                <img src="img/mumbaiindia-may-16-2020-bus-600nw-1733164436.webp" alt="">
+                <h3>Mini-Bus Drivers</h3>
+                <p>890 jobs</p>
+            </li>
+            <li>
+                <img src="img/plumber.webp" alt="">
+                <h3>Plumber</h3>
+                <p>234 jobs</p>
+            </li>
+            <li>
+                <img src="img/Street-Vendors-Act-Of-2014-img.jpg" alt="">
+                <h3>Street-Vendors</h3>
+                <p>456 jobs</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="call-to-action">
+        <h2>Get Started Today!</h2>
+        <p>Sign up for free and start applying to jobs</p>
+        <button>Sign Up</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Kaamsathi</p>
+    </footer>
+</body>
+
+</html>

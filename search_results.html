@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+    <h2>Job Results</h2>
+    <ul>
+        {% for job in results %}
+        <li>{{ job.title }} - {{ job.location }} - {{ job.salary }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
